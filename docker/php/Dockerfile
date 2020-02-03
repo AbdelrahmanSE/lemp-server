@@ -1,14 +1,12 @@
-FROM php:7.3.1-fpm-alpine
+FROM php:7.4.2-fpm-alpine
 
 # COPY composer.lock composer.json /var/www/
 
 WORKDIR /var/www
 
-# RUN apk add composer
+RUN apk add composer
 # Install dependencies
-#RUN apt update && apt install -y \
-#    build-essential \
-#    mysql-client \
+RUN apk update && apk add build-base mysql-client oniguruma-dev
 #    libpng-dev \
 #    libjpeg62-turbo-dev \
 #    libfreetype6-dev \
@@ -25,7 +23,8 @@ WORKDIR /var/www
 #
 ## Install extensions
 #RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
-RUN docker-php-ext-install pdo_mysql mbstring bcmath
+# RUN docker-php-ext-install pdo_mysql mbstring bcmath
+RUN docker-php-ext-install mysqli pdo_mysql mbstring bcmath
 #RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
 #RUN docker-php-ext-install gd
 
@@ -44,7 +43,7 @@ RUN docker-php-ext-install pdo_mysql mbstring bcmath
 #USER www
 #COPY . /var/www
 #RUN chown -R www:www /var/www
-RUN apk add php7-mysqli php7-opcache php7-gd php7-mysqli php7-zlib php7-curl php7-phar php7-json php7-mbstring 
+RUN apk add php-mysqli php7-opcache php7-gd php7-zlib php7-curl php7-phar php7-json php7-mbstring 
 
 # Copy existing application directory permissions
 RUN addgroup -S www && adduser -S www -G www
