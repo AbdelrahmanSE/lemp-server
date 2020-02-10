@@ -31,3 +31,6 @@ All databse data will be store in the `db` folder and it is already ignored but 
 - username: root
 - password: 1234
 - database name: db
+
+## PHP server
+- All files should be stored in the `www` folder.
