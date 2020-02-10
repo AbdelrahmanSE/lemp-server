@@ -34,3 +34,8 @@ All databse data will be store in the `db` folder and it is already ignored but 
 
 ## PHP server
 - All files should be stored in the `www` folder.
+
+## Local server
+Go to 'local.test'
+you will need to add the following line in your hosts file
+`127.0.0.1       flexnebula.test`
