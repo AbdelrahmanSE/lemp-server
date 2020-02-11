@@ -55,6 +55,7 @@ services:
     restart: always
     volumes:
       - ./www/:/var/www/
+      - ./docker/php/extend_php.ini:/usr/local/etc/php/conf.d/extend_php.ini
     ports:
       - 9000:9000
     networks:
